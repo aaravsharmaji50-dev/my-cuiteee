@@ -2,162 +2,229 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forever Us 💖</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Forever Us ❤️</title>
 <style>
-:root{
-  --accent:#ff4d88;
-  --bg1:#ffe6f0;
-  --bg2:#fff;
-}
+*{box-sizing:border-box;}
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  overflow-x:hidden;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(120deg,#ffdde1,#ee9ca7);
   text-align:center;
-  color:#333;
+  color:#fff;
+  overflow-x:hidden;
+  position:relative;
 }
+
+/* Floating hearts + stars */
+.heart, .star{
+  position:fixed;
+  bottom:-20px;
+  animation:floatUp linear infinite;
+}
+.heart{color:rgba(255,100,180,0.7); font-size:20px;}
+.star{color:rgba(255,255,255,0.8); font-size:14px;}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0deg);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-120vh) rotate(360deg);opacity:0;}
+}
+
 .page{
-  min-height:100vh;
   display:none;
   padding:40px 20px;
+  min-height:100vh;
+  animation:fadeIn 1s ease;
 }
 .page.active{display:block;}
-h1{color:var(--accent);}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
 button{
-  padding:12px 24px;
+  padding:12px 26px;
+  font-size:18px;
   border:none;
   border-radius:30px;
-  background:var(--accent);
-  color:white;
-  font-size:16px;
+  background:#fff;
+  color:#ee5a7a;
   cursor:pointer;
-  margin-top:20px;
+  margin-top:25px;
+  transition:0.3s;
 }
 button:hover{transform:scale(1.05);}
+
 input{
   padding:10px;
-  font-size:16px;
+  font-size:18px;
   border-radius:10px;
-  border:1px solid #ccc;
+  border:none;
+  margin-top:10px;
 }
+
 img{
   max-width:80%;
   border-radius:20px;
   margin:15px 0;
+  animation:zoomIn 1s ease;
 }
-audio{margin-top:20px;}
-/* cute star animation */
-.star{
+@keyframes zoomIn{
+  from{transform:scale(0.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.ring-sticker{
+  display:inline-block;
+  font-size:60px;
+  animation:ringMove 2s ease-in-out infinite alternate;
+}
+@keyframes ringMove{
+  0%{transform:rotate(-20deg) translateY(0);}
+  50%{transform:rotate(20deg) translateY(-10px);}
+  100%{transform:rotate(-20deg) translateY(0);}
+}
+
+/* Cat kiss sticker */
+.cat-kiss{
   position:fixed;
-  width:12px;
-  height:12px;
-  background:yellow;
-  border-radius:50%;
-  animation:floatStar linear infinite;
+  font-size:50px;
+  bottom:50px;
+  animation:kissMove 5s linear infinite;
 }
-@keyframes floatStar{
-  0%{transform:translateY(100vh) rotate(0deg) scale(1);}
-  50%{transform:translateY(50vh) rotate(180deg) scale(1.2);}
-  100%{transform:translateY(-10vh) rotate(360deg) scale(.8);}
+@keyframes kissMove{
+  0%{left:-10%; opacity:0;}
+  10%{opacity:1;}
+  50%{left:50%; opacity:1;}
+  90%{opacity:100%; left:110%;}
+  100%{opacity:0;}
 }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: DATE CHECK -->
+<!-- Floating hearts and stars -->
+<script>
+for(let i=0;i<15;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  h.style.fontSize=(14+Math.random()*20)+"px";
+  document.body.appendChild(h);
+
+  let s=document.createElement("div");
+  s.className="star";
+  s.innerHTML="★";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(6+Math.random()*6)+"s";
+  s.style.fontSize=(8+Math.random()*12)+"px";
+  document.body.appendChild(s);
+}
+</script>
+
+<!-- PAGE 1 : DATE -->
 <div class="page active" id="p1">
-  <h1>Enter our special date 💖</h1>
+  <h1>When did our relationship begin? 💖</h1>
+  <p>Enter the special date</p>
   <input type="text" id="date" placeholder="DD/MM/YYYY">
   <br>
   <button onclick="checkDate()">Next 💌</button>
 </div>
 
-<!-- PAGE 2: SHAYARI -->
+<!-- PAGE 2 : Shayari / emotional -->
 <div class="page" id="p2">
-  <h1>Shayari For You 🌹</h1>
+  <h1>For You 🥀</h1>
   <p>
     Tum meri kahani ka wo hissa ho<br>
     jise main har pal jeena chahta hoon.<br>
-    Dard bhi tumse juda nahi… aur sukoon bhi tumhi ho.
+    Dard bhi tumse juda nahi…<br>
+    aur sukoon bhi tumhi ho.
   </p>
   <button onclick="go(3)">Next ➜</button>
 </div>
 
-<!-- PAGE 3: RING STICKER -->
+<!-- PAGE 3 : Ring sticker -->
 <div class="page" id="p3">
   <h1>Forever Promise 💍</h1>
-  <p>Click the sticker below to see my love 💌</p>
-  <img src="https://drive.google.com/uc?export=view&id=1CFdlJAW3qnXCCuY7lI14Oof6Y41pnZqM" style="width:200px;cursor:pointer;" onclick="alert('Dream with youhhh 💖')">
-  <br>
+  <div class="ring-sticker">💍</div>
+  <p>
+    Ye koi tasveer nahi,<br>
+    ye wo vaada hai jo meri rooh tak likha hua hai.
+  </p>
   <button onclick="go(4)">Next ➜</button>
 </div>
 
-<!-- PAGE 4: PHOTOS + SHAYARI -->
+<!-- PAGE 4 : Photos + Shayari + cat kiss -->
 <div class="page" id="p4">
-  <h1>Moments & Memories ✨</h1>
+  <h1>Words I Feel For You ✨</h1>
   <p>
     Tumhari muskaan meri sabse khoobsurat aadat ban chuki hai.<br>
-    Jo tum par guzarti hai, wo mujh par bhi asar karti hai.
+    Jo tum par guzarti hai,<br>
+    wo mujh par bhi asar karti hai.
   </p>
-  <img src="https://drive.google.com/uc?export=view&id=1AeAU8bYFOxQAjMVpUKydyaQ7y4zTjaWR">
-  <img src="https://drive.google.com/uc?export=view&id=1gj6JI8cZhtxZfnUjCpPKuJ74XQxb0mf7">
+  <img src="img1.png">
+  <img src="img2.jpg">
+  <img src="img3.jpg">
   <p><b>— Forever yours, Fanaachal 💞</b></p>
+
+  <div class="cat-kiss">😽💋😽</div>
   <button onclick="go(5)">Next ➜</button>
 </div>
 
-<!-- PAGE 5: MUSIC -->
+<!-- PAGE 5 : Music -->
 <div class="page" id="p5">
   <h1>Dedicated For You 🎶</h1>
   <audio controls autoplay>
-    <source src="https://drive.google.com/uc?export=view&id=13dCIsYnFp20Qokp4eWAhHLjqSaXTZ7Jn" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg">
   </audio>
-  <p>Always & Forever ❤️</p>
+  <br>
   <button onclick="go(6)">Next ➜</button>
 </div>
 
-<!-- PAGE 6: END PAGE (ROMANTIC TEXT) -->
+<!-- PAGE 6 : FINAL MESSAGE -->
 <div class="page" id="p6">
-  <h1>Forever Yours 💖</h1>
-  <p>
-    Mujhe nahi pata main ek acha boyfriend ban paya hoon ya nahi,<br>
-    lekin main apni taraf se hamesha poori koshish karta rehta hoon.<br><br>
-    
-    Jab bhi main aapse baat karta hoon,<br>
-    mujhe ek alag hi sukoon mehsoos hota hai — jaise duniya ki saari fikrein ek pal ke liye gayab ho jaati hain.<br><br>
-    
-    Aap mere liye sab kuch ho…<br>
-    aur ye mat sochna ki ye AI ne likha hai 😅<br>
-    ye mere dil ke real aur deep words hain — sirf aapke liye.<br><br>
-    
-    Abhi main aapko hug nahi kar sakta,<br>
-    lekin ek din zaroor aayega jab main aapko<br>
-    is tarah se gale lagaunga ki waqt ruk jaaye,<br>
-    aur sirf humari duniya rahegi, sirf hum dono ke beech.<br><br>
-    
-    Mujhe umeed hai<br>
-    mera ye chhota sa gift<br>
-    aapke chehre par thodi si khushi le aaya hoga 🤍<br><br>
-    
-    Aur yaad rakhiye…<br>
-    har din, har pal, har soch mein aap meri duniya ho,<br>
-    aur main hamesha apni taraf se poori koshish karta rahunga<br>
-    ki aapko kabhi bhi kami mehsoos na ho.<br>
-    Aap meri inspiration ho, meri shanti ho, meri khushi ka reason ho.<br><br>
-    
-    Bas itna hi likhna si meri kalam ne…<br>
-    Tu mili ta zindagi thodi aur pyari laggi.<br>
-    Je milna naseeb ch na hoya,<br>
-    ta bhi tera pyar meri saans’an ch hamesha rahega.<br>
-    Main duur reh ke bhi sirf tera hi si,<br>
-    aur aakhri saah tak tera hi rahunga.
+  <h1>From My Heart 🤍</h1>
+  <p style="line-height:1.7;font-size:17px;max-width:800px;margin:auto;">
+
+Mujhe nahi pata main ek acha boyfriend ban paya hoon ya nahi,<br>
+lekin main apni taraf se hamesha poori koshish karta rehta hoon.<br><br>
+
+jab bhi main aapse baat karta hoon,<br>
+mujhe ek alag hi sukoon mehsoos hota hai — jaise duniya ki saari fikrein<br>
+ek pal ke liye gayab ho jaati hain.<br><br>
+
+Aap mere liye sab kuch ho…<br>
+aur ye mat sochna ki ye AI ne likha hai 😅<br>
+ye mere dil ke real aur deep words hain — sirf aapke liye.<br><br>
+
+Abhi main aapko hug nahi kar sakta,<br>
+lekin ek din zaroor aayega jab main aapko<br>
+is tarah se gale lagaunga ki waqt ruk jaaye,<br>
+aur sirf humari duniya rahegi, sirf hum dono ke beech.<br><br>
+
+Mujhe umeed hai<br>
+mera ye chhota sa gift<br>
+aapke chehre par thodi si khushi le aaya hoga 🤍<br><br>
+
+Aur yaad rakhiye…<br>
+har din, har pal, har soch mein aap meri duniya ho,<br>
+aur main hamesha apni taraf se poori koshish karta rahunga<br>
+ki aapko kabhi bhi kami mehsoos na ho.<br>
+Aap meri inspiration ho, meri shanti ho, meri khushi ka reason ho.<br><br>
+
+<b>Bas itna hi likhna si meri kalam ne…</b><br>
+Tu mili ta zindagi thodi aur pyari laggi.<br>
+Je milna naseeb ch na hoya,<br>
+ta bhi tera pyar meri saans’an ch hamesha rahega.<br>
+Main duur reh ke bhi sirf tera hi si,<br>
+aur aakhri saah tak tera hi rahunga 💖
+
   </p>
 </div>
 
 <script>
-// PAGE NAVIGATION
 function checkDate(){
   if(document.getElementById("date").value==="01/09/2025"){
     go(2);
@@ -169,19 +236,7 @@ function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById("p"+n).classList.add('active');
 }
-
-// cute star animation creation
-function createStar(){
-  const star=document.createElement('div');
-  star.className='star';
-  star.style.left=Math.random()*100+'vw';
-  star.style.width=5+Math.random()*8+'px';
-  star.style.height=5+Math.random()*8+'px';
-  star.style.animationDuration=2+Math.random()*3+'s';
-  document.body.appendChild(star);
-  setTimeout(()=>star.remove(),5000);
-}
-setInterval(createStar,400);
 </script>
+
 </body>
 </html>
