@@ -1,143 +1,112 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dream With Youhhh 🤍</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Forever Us ❤️</title>
 <style>
 body{
   margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg,#ffd6e8,#fff);
+  background: linear-gradient(120deg,#ffdde1,#ee9ca7);
   text-align:center;
+  color:#fff;
 }
 .page{
   display:none;
-  min-height:100vh;
   padding:40px 20px;
+  min-height:100vh;
 }
 .page.active{display:block;}
 button{
-  padding:12px 25px;
+  padding:12px 24px;
+  font-size:18px;
   border:none;
-  border-radius:25px;
-  background:#ff4d88;
-  color:white;
-  font-size:16px;
+  border-radius:30px;
+  background:#fff;
+  color:#ee5a7a;
   cursor:pointer;
+  margin-top:20px;
 }
 input{
   padding:10px;
+  font-size:18px;
   border-radius:10px;
-  border:1px solid #ccc;
-  font-size:16px;
+  border:none;
 }
 img{
-  max-width:85%;
+  max-width:80%;
   border-radius:20px;
   margin:15px 0;
 }
+audio{margin-top:20px;}
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 : DATE CHECK -->
 <div class="page active" id="p1">
-  <h2>💗 Welcome Cutieee 💗</h2>
-  <p>Ek chhota sa surprise… sirf aapke liye</p>
-  <button onclick="next(2)">Start 💌</button>
-</div>
-
-<!-- PAGE 2 (RING) -->
-<div class="page" id="p2">
-  <h2>💍 Dream With Youhhh</h2>
-  <p>Socho… agar ek din ye ring sach me mile 💗</p>
-  <img src="img1.png">
+  <h1>When did our relationship begin? 💖</h1>
+  <p>Enter the special date</p>
+  <input type="text" id="date" placeholder="DD/MM/YYYY">
   <br>
-  <button onclick="next(3)">Next ➝</button>
+  <button onclick="checkDate()">Next 💌</button>
 </div>
 
-<!-- PAGE 3 (DATE QUESTION) -->
+<!-- PAGE 2 : DUKH / SHAYARI -->
+<div class="page" id="p2">
+  <h1>For You 🥀</h1>
+  <p>
+    Tum meri kahani ka wo hissa ho  
+    jise main har pal jeena chahta hoon.  
+    Dard bhi tumse juda nahi…  
+    aur sukoon bhi tumhi ho.
+  </p>
+  <button onclick="go(3)">Next ➜</button>
+</div>
+
+<!-- PAGE 3 : RING (STICKER ONLY) -->
 <div class="page" id="p3">
-  <h3>Relationship kab start hua tha? 🥺</h3>
-  <p>(DD/MM/YYYY)</p>
-  <input type="text" id="dateInput" placeholder="01/09/2025">
-  <br><br>
-  <button onclick="checkDate()">Submit</button>
-  <p id="err" style="color:red;"></p>
+  <h1>Forever Promise 💍</h1>
+  <p>This promise lives in my heart.</p>
+  <button onclick="go(4)">Next ➜</button>
 </div>
 
-<!-- PAGE 4 (PHOTOS) -->
+<!-- PAGE 4 : PHOTOS + SHAYARI -->
 <div class="page" id="p4">
-  <h2>💞 Some Beautiful Moments 💞</h2>
+  <h1>Words I Feel For You ✨</h1>
+  <p>
+    Tumhari muskaan meri sabse khoobsurat aadat ban chuki hai.  
+    Jo tum par guzarti hai,  
+    wo mujh par bhi asar karti hai.
+  </p>
+  <img src="img1.png">
   <img src="img2.jpg">
   <img src="img3.jpg">
-  <br>
-  <button onclick="next(5)">Next ➝</button>
+  <p><b>— Forever yours, Fanaachal 💞</b></p>
+  <button onclick="go(5)">Next ➜</button>
 </div>
 
-<!-- PAGE 5 (SHAYARI – ONLY WHAT YOU SAID) -->
+<!-- PAGE 5 : MUSIC -->
 <div class="page" id="p5">
-  <p>
-Tujhe chand kahoon to usmein bhi daag hote hain,<br>
-Tujhe phool kahoon to khushboo ke baad murjhaate hain.<br><br>
-
-Agar tujhe khuda ka darja doon,<br>
-To khuda bhi shayad naraz ho jaaye…<br><br>
-
-Isliye tujhe sirf “mera” kahunga,<br>
-Kyuki meri har dua ka matlab sirf aap ho. 💗
-  </p>
-  <button onclick="next(6)">Next ➝</button>
-</div>
-
-<!-- PAGE 6 (MUSIC) -->
-<div class="page" id="p6">
-  <h2>🎶 Udaarian 🎶</h2>
-  <audio controls>
+  <h1>Dedicated For You 🎶</h1>
+  <audio controls autoplay>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
-  <br><br>
-  <button onclick="next(7)">Next ➝</button>
-</div>
-
-<!-- PAGE 7 (FINAL MESSAGE) -->
-<div class="page" id="p7">
-  <p>
-Mujhe nahi pata main ek acha boyfriend ban paya hoon ya nahi,<br>
-lekin main apni taraf se hamesha poori koshish karta rehta hoon.<br><br>
-
-Ye himmat mujhe aapki aankhon ki khoobsurti se milti hai,<br>
-jab bhi main aapse baat karta hoon,<br>
-mujhe ek alag hi sukoon mehsoos hota hai — jaise duniya ki saari fikrein ek pal ke liye gayab ho jaati hain.<br><br>
-
-Aap mere liye sab kuch ho…<br>
-aur ye mat sochna ki ye AI ne likha hai 😅<br>
-ye mere dil ke real aur deep words hain — sirf aapke liye.<br><br>
-
-Abhi main aapko hug nahi kar sakta,<br>
-lekin ek din zaroor aayega jab waqt ruk jaaye,<br>
-aur sirf humari duniya rahe… 🤍<br><br>
-
-I hope mera ye chhota sa gift<br>
-aapke chehre par thodi si khushi le aaya ho.
-  </p>
+  <p>Always & Forever ❤️</p>
 </div>
 
 <script>
-function next(n){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('p'+n).classList.add('active');
-}
 function checkDate(){
-  let d=document.getElementById('dateInput').value.trim();
-  if(d==="01/09/2025"){
-    next(4);
+  if(document.getElementById("date").value==="01/09/2025"){
+    go(2);
   }else{
-    document.getElementById('err').innerText="Galat date 😢";
+    alert("Wrong date 💔");
   }
+}
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById("p"+n).classList.add('active');
 }
 </script>
 
