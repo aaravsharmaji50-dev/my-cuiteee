@@ -2,36 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Forever Us ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Us 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{
+  --accent:#ff4d88;
+  --bg1:#ffe6f0;
+  --bg2:#fff;
+}
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg,#ffdde1,#ee9ca7);
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
   text-align:center;
-  color:#fff;
+  color:#333;
 }
 .page{
+  min-height:100vh;
   display:none;
   padding:40px 20px;
-  min-height:100vh;
 }
 .page.active{display:block;}
+h1{color:var(--accent);}
 button{
   padding:12px 24px;
-  font-size:18px;
   border:none;
   border-radius:30px;
-  background:#fff;
-  color:#ee5a7a;
+  background:var(--accent);
+  color:white;
+  font-size:16px;
   cursor:pointer;
   margin-top:20px;
 }
+button:hover{transform:scale(1.05);}
 input{
   padding:10px;
-  font-size:18px;
+  font-size:16px;
   border-radius:10px;
-  border:none;
+  border:1px solid #ccc;
 }
 img{
   max-width:80%;
@@ -39,64 +49,115 @@ img{
   margin:15px 0;
 }
 audio{margin-top:20px;}
+/* cute star animation */
+.star{
+  position:fixed;
+  width:12px;
+  height:12px;
+  background:yellow;
+  border-radius:50%;
+  animation:floatStar linear infinite;
+}
+@keyframes floatStar{
+  0%{transform:translateY(100vh) rotate(0deg) scale(1);}
+  50%{transform:translateY(50vh) rotate(180deg) scale(1.2);}
+  100%{transform:translateY(-10vh) rotate(360deg) scale(.8);}
+}
 </style>
 </head>
-
 <body>
 
-<!-- PAGE 1 : DATE CHECK -->
+<!-- PAGE 1: DATE CHECK -->
 <div class="page active" id="p1">
-  <h1>When did our relationship begin? 💖</h1>
-  <p>Enter the special date</p>
+  <h1>Enter our special date 💖</h1>
   <input type="text" id="date" placeholder="DD/MM/YYYY">
   <br>
   <button onclick="checkDate()">Next 💌</button>
 </div>
 
-<!-- PAGE 2 : DUKH / SHAYARI -->
+<!-- PAGE 2: SHAYARI -->
 <div class="page" id="p2">
-  <h1>For You 🥀</h1>
+  <h1>Shayari For You 🌹</h1>
   <p>
-    Tum meri kahani ka wo hissa ho  
-    jise main har pal jeena chahta hoon.  
-    Dard bhi tumse juda nahi…  
-    aur sukoon bhi tumhi ho.
+    Tum meri kahani ka wo hissa ho<br>
+    jise main har pal jeena chahta hoon.<br>
+    Dard bhi tumse juda nahi… aur sukoon bhi tumhi ho.
   </p>
   <button onclick="go(3)">Next ➜</button>
 </div>
 
-<!-- PAGE 3 : RING (STICKER ONLY) -->
+<!-- PAGE 3: RING STICKER -->
 <div class="page" id="p3">
   <h1>Forever Promise 💍</h1>
-  <p>This promise lives in my heart.</p>
+  <p>Click the sticker below to see my love 💌</p>
+  <img src="https://drive.google.com/uc?export=view&id=1CFdlJAW3qnXCCuY7lI14Oof6Y41pnZqM" style="width:200px;cursor:pointer;" onclick="alert('Dream with youhhh 💖')">
+  <br>
   <button onclick="go(4)">Next ➜</button>
 </div>
 
-<!-- PAGE 4 : PHOTOS + SHAYARI -->
+<!-- PAGE 4: PHOTOS + SHAYARI -->
 <div class="page" id="p4">
-  <h1>Words I Feel For You ✨</h1>
+  <h1>Moments & Memories ✨</h1>
   <p>
-    Tumhari muskaan meri sabse khoobsurat aadat ban chuki hai.  
-    Jo tum par guzarti hai,  
-    wo mujh par bhi asar karti hai.
+    Tumhari muskaan meri sabse khoobsurat aadat ban chuki hai.<br>
+    Jo tum par guzarti hai, wo mujh par bhi asar karti hai.
   </p>
-  <img src="img1.png">
-  <img src="img2.jpg">
-  <img src="img3.jpg">
+  <img src="https://drive.google.com/uc?export=view&id=1AeAU8bYFOxQAjMVpUKydyaQ7y4zTjaWR">
+  <img src="https://drive.google.com/uc?export=view&id=1gj6JI8cZhtxZfnUjCpPKuJ74XQxb0mf7">
   <p><b>— Forever yours, Fanaachal 💞</b></p>
   <button onclick="go(5)">Next ➜</button>
 </div>
 
-<!-- PAGE 5 : MUSIC -->
+<!-- PAGE 5: MUSIC -->
 <div class="page" id="p5">
   <h1>Dedicated For You 🎶</h1>
   <audio controls autoplay>
-    <source src="song.mp3" type="audio/mpeg">
+    <source src="https://drive.google.com/uc?export=view&id=13dCIsYnFp20Qokp4eWAhHLjqSaXTZ7Jn" type="audio/mpeg">
   </audio>
   <p>Always & Forever ❤️</p>
+  <button onclick="go(6)">Next ➜</button>
+</div>
+
+<!-- PAGE 6: END PAGE (ROMANTIC TEXT) -->
+<div class="page" id="p6">
+  <h1>Forever Yours 💖</h1>
+  <p>
+    Mujhe nahi pata main ek acha boyfriend ban paya hoon ya nahi,<br>
+    lekin main apni taraf se hamesha poori koshish karta rehta hoon.<br><br>
+    
+    Jab bhi main aapse baat karta hoon,<br>
+    mujhe ek alag hi sukoon mehsoos hota hai — jaise duniya ki saari fikrein ek pal ke liye gayab ho jaati hain.<br><br>
+    
+    Aap mere liye sab kuch ho…<br>
+    aur ye mat sochna ki ye AI ne likha hai 😅<br>
+    ye mere dil ke real aur deep words hain — sirf aapke liye.<br><br>
+    
+    Abhi main aapko hug nahi kar sakta,<br>
+    lekin ek din zaroor aayega jab main aapko<br>
+    is tarah se gale lagaunga ki waqt ruk jaaye,<br>
+    aur sirf humari duniya rahegi, sirf hum dono ke beech.<br><br>
+    
+    Mujhe umeed hai<br>
+    mera ye chhota sa gift<br>
+    aapke chehre par thodi si khushi le aaya hoga 🤍<br><br>
+    
+    Aur yaad rakhiye…<br>
+    har din, har pal, har soch mein aap meri duniya ho,<br>
+    aur main hamesha apni taraf se poori koshish karta rahunga<br>
+    ki aapko kabhi bhi kami mehsoos na ho.<br>
+    Aap meri inspiration ho, meri shanti ho, meri khushi ka reason ho.<br><br>
+    
+    Bas itna hi likhna si meri kalam ne…<br>
+    Tu mili ta zindagi thodi aur pyari laggi.<br>
+    Je milna naseeb ch na hoya,<br>
+    ta bhi tera pyar meri saans’an ch hamesha rahega.<br>
+    Main duur reh ke bhi sirf tera hi si,<br>
+    aur aakhri saah tak tera hi rahunga.
+  </p>
 </div>
 
 <script>
+// PAGE NAVIGATION
 function checkDate(){
   if(document.getElementById("date").value==="01/09/2025"){
     go(2);
@@ -108,7 +169,19 @@ function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById("p"+n).classList.add('active');
 }
-</script>
 
+// cute star animation creation
+function createStar(){
+  const star=document.createElement('div');
+  star.className='star';
+  star.style.left=Math.random()*100+'vw';
+  star.style.width=5+Math.random()*8+'px';
+  star.style.height=5+Math.random()*8+'px';
+  star.style.animationDuration=2+Math.random()*3+'s';
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),5000);
+}
+setInterval(createStar,400);
+</script>
 </body>
 </html>
